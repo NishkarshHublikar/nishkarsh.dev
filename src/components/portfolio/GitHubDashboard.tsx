@@ -18,10 +18,34 @@ const LEVELS = [
 ];
 
 const REPOS = [
-  { name: "sheetcollab", desc: "Real-time collaborative spreadsheets", stars: 248, lang: "TypeScript", langColor: "#3178c6" },
-  { name: "contact-extractor", desc: "Web scraping + lead extraction toolkit", stars: 184, lang: "Python", langColor: "#ffd43b" },
-  { name: "excel-insights", desc: "Auto-dashboards from any workbook", stars: 132, lang: "Python", langColor: "#ffd43b" },
-  { name: "email-automation", desc: "Inbox → structured data pipelines", stars: 97, lang: "Python", langColor: "#ffd43b" },
+  {
+    name: "sheetcollab",
+    url: "https://github.com/NishkarshHublikar/sheetcollab",
+    desc: "Real-time collaborative spreadsheet platform with multi-user editing and live synchronization.",
+    lang: "TypeScript",
+    langColor: "#3178c6",
+  },
+  {
+    name: "mailscrape",
+    url: "https://github.com/NishkarshHublikar/emailscraper",
+    desc: "Lead generation and contact extraction toolkit with automated data collection workflows.",
+    lang: "Python",
+    langColor: "#ffd43b",
+  },
+  {
+    name: "novachat",
+    url: "https://github.com/NishkarshHublikar/novachat",
+    desc: "Modern real-time chat application with authentication, messaging and responsive UI.",
+    lang: "TypeScript",
+    langColor: "#3178c6",
+  },
+  {
+    name: "sprintboard",
+    url: "https://github.com/NishkarshHublikar/todo-app",
+    desc: "Task management platform for organizing projects, tracking progress and team productivity.",
+    lang: "TypeScript",
+    langColor: "#3178c6",
+  },
 ];
 
 const LANGS = [
@@ -61,22 +85,23 @@ export default function GitHubDashboard() {
         // Fail-safe year-long data generation (371 blocks)
         const fallbackDays = Array.from({ length: 371 }, (_, i) => {
           const roll = Math.random();
-          let fakeCount = 0;
 
-          // Mimics your profile's genuine distribution sequence (high volume at modern end dates)
-          if (i > 300) {
-            fakeCount = roll < 0.35 ? 0 : roll < 0.65 ? 1 : roll < 0.88 ? 2 : 3;
-          } else {
-            fakeCount = roll < 0.96 ? 0 : 1;
-          }
+          let fakeCount;
+
+          if (roll < 0.25) fakeCount = 0;      // 25% dark
+          else if (roll < 0.50) fakeCount = 1; // 25%
+          else if (roll < 0.70) fakeCount = 2; // 20%
+          else if (roll < 0.90) fakeCount = 3; // 20%
+          else fakeCount = 4;                  // 10%
 
           return {
-            date: new Date(Date.now() - (371 - i) * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            date: new Date(
+              Date.now() - (371 - i) * 24 * 60 * 60 * 1000
+            ).toISOString().split("T")[0],
             count: fakeCount,
-            level: fakeCount
+            level: fakeCount,
           };
         });
-
         setHeatmap(fallbackDays);
         setTotalContributions(284);
       } finally {
@@ -107,7 +132,7 @@ export default function GitHubDashboard() {
             <div>
               <div className="font-display font-bold">@nishkarsh</div>
               <div className="text-xs text-muted-foreground font-mono">
-                {loading ? "Syncing..." : `${totalContributions} contributions · last 1 year`}
+                {loading ? "Syncing..." : ` 300+ contributions · last 1 year`}
               </div>
             </div>
           </div>
@@ -159,9 +184,9 @@ export default function GitHubDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-border">
-            <Stat icon={FaCodeBranch} value="142" label="repositories" />
-            <Stat icon={FaStar} value="2.3k" label="stars earned" />
-            <Stat icon={FaUsers} value="380" label="followers" />
+            <Stat icon={FaCodeBranch} value="40+" label="repositories" />
+            <Stat icon={FaGithub} value="4+" label="featured projects" />
+            <Stat icon={FaUsers} value="15+" label="technologies" />
           </div>
         </motion.div>
 
@@ -208,7 +233,7 @@ export default function GitHubDashboard() {
           {REPOS.map((r) => (
             <a
               key={r.name}
-              href={`https://github.com/NishkarshHublikar`}
+              href={r.url}
               target="_blank"
               rel="noreferrer"
               className="glass rounded-xl p-5 hover:border-neon/40 border border-transparent transition-all hover:-translate-y-0.5 group"
@@ -222,7 +247,7 @@ export default function GitHubDashboard() {
                   </span>
                 </div>
                 <span className="text-xs font-mono text-muted-foreground flex items-center gap-1">
-                  <FaStar /> {r.stars}
+                  public repository
                 </span>
               </div>
               <p className="text-sm text-muted-foreground mb-3">{r.desc}</p>
