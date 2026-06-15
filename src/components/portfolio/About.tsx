@@ -3,9 +3,9 @@ import Section from "./Section";
 import { FaUserAstronaut } from "react-icons/fa";
 
 const TIMELINE = [
-  { year: "2025", title: "B.Tech in Computer Science", place: "ongoing — building, breaking, learning" },
-  { year: "2024", title: "Foundation", place: "Switched fully into software engineering" },
-  { year: "2022", title: "First lines of code", place: "Python automations that scratched real itches" },
+  { year: "2026", title: "B.Tech in Computer Science", place: "ongoing — building, breaking, learning" },
+  { year: "2025", title: "Foundation", place: "Switched fully into software engineering" },
+  { year: "2023", title: "First lines of code", place: "Python automations that scratched real itches" },
 ];
 
 const INTERESTS = ["LLM tooling", "Realtime systems", "Web automation", "Developer experience", "Edge runtimes", "Open source"];
