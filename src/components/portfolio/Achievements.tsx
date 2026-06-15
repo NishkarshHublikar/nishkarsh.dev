@@ -1,26 +1,26 @@
 import { motion } from "framer-motion";
 import Section from "./Section";
-import { FaTrophy, FaCode, FaCertificate, FaMedal } from "react-icons/fa";
-import { SiLeetcode, SiCodeforces, SiHackerrank, SiGeeksforgeeks } from "react-icons/si";
+import { FaTrophy, FaCode, FaCertificate, FaMedal, FaTools } from "react-icons/fa";
+import { SiLeetcode, SiHackerrank, SiGithub } from "react-icons/si";
 
 const STATS = [
   { value: "100+", label: "LeetCode submissions", icon: SiLeetcode, color: "#ffa116" },
-  { value: "1600+", label: "Codeforces rating", icon: SiCodeforces, color: "#1f8acb" },
-  { value: "5★", label: "HackerRank", icon: SiHackerrank, color: "#2ec866" },
-  { value: "Top 10%", label: "GFG Coding Score", icon: SiGeeksforgeeks, color: "#2f8d46" },
+  { value: "300+", label: "Github Contributions", icon: SiGithub, color: "#1f8acb" },
+  { value: "5★", label: "HackerRank SQL", icon: SiHackerrank, color: "#2ec866" },
+  { value: "15+", label: "Technologies Used", icon: FaTools, color: "#2f8d46" },
 ];
 
 const CARDS = [
   {
     icon: FaTrophy,
-    title: "Hackathon Finalist ×3",
-    body: "Top-tier placements at national-level hackathons — including a 36-hour realtime collab build.",
+    title: "Development Journey",
+    body: "30+ public repositories spanning full-stack, cloud, and data-driven applications.",
     color: "var(--amber)",
   },
   {
     icon: FaCertificate,
     title: "Cloud Fundamentals",
-    body: "AWS & Google Cloud certified — solid grasp of serverless, storage, and edge runtimes.",
+    body: "Hands-on experience deploying full-stack applications using AWS services, Vercel, Cloudflare Workers, and modern CI/CD workflows.",
     color: "var(--cyan)",
   },
   {
