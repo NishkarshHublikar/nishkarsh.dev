@@ -62,16 +62,17 @@ export default function Resume() {
             </div>
             <div className="space-y-2">
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+                href="/Nishkarsh_CVResume.pdf"
+                download
                 className="w-full inline-flex justify-center items-center gap-2 px-4 py-3 rounded-lg bg-neon text-primary-foreground font-mono font-semibold hover:shadow-[0_0_30px_oklch(0.88_0.25_145_/_50%)] transition-shadow"
                 data-cursor-hover
               >
                 <FaDownload /> Download Resume
               </a>
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+                href="/Nishkarsh_CVResume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full inline-flex justify-center items-center gap-2 px-4 py-3 rounded-lg glass border border-border hover:border-neon/50 font-mono transition-colors"
                 data-cursor-hover
               >
@@ -85,7 +86,7 @@ export default function Resume() {
               <span className="text-neon">+</span> Added SheetCollab as featured project
             </div>
             <div className="text-muted-foreground">
-              <span className="text-neon">+</span> Cloud fundamentals certifications
+              <span className="text-neon">+</span> DevOps certifications
             </div>
             <div className="text-muted-foreground">
               <span className="text-destructive">-</span> Removed outdated freelance gigs
