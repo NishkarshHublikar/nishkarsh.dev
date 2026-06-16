@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaPaperPlane } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const SOCIALS = [
   { icon: FaGithub, label: "github", handle: "@NishkarshHublikar", href: "https://github.com/NishkarshHublikar", color: "var(--foreground)" },
@@ -13,12 +14,42 @@ const SOCIALS = [
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", message: "" });
+
+    setSending(true);
+    setError(false);
+
+    try {
+      await emailjs.send(
+        "service_k05nqbf",
+        "template_ys7f1r6",
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        "a38qYkawHgH2oaW3g"
+      );
+
+      setSent(true);
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+
+      setTimeout(() => setSent(false), 4000);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -72,14 +103,21 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-neon text-primary-foreground font-semibold hover:shadow-[0_0_30px_oklch(0.88_0.25_145_/_50%)] transition-shadow"
+              disabled={sending}
+              className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-neon text-primary-foreground font-semibold hover:shadow-[0_0_30px_oklch(0.88_0.25_145_/_50%)] transition-shadow disabled:opacity-70"
               data-cursor-hover
             >
-              <FaPaperPlane /> ./send
+              <FaPaperPlane />
+              {sending ? "sending..." : "./send"}
             </button>
             {sent && (
               <div className="text-neon text-xs">
                 ✓ message transmitted. I'll reply within 24 hours.
+              </div>
+            )}
+            {error && (
+              <div className="text-red-400 text-xs">
+                ✗ transmission failed. Please try again.
               </div>
             )}
           </div>
