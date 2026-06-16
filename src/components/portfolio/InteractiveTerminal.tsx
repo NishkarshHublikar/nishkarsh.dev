@@ -39,10 +39,10 @@ Type "open <n>" or scroll to the Projects section.`,
   experience: `→ Full Stack Engineer · Independent  (2024 — Present)
 → Python Automation Dev · Freelance (2023 — 2024)
 → Open-Source Contributor          (2022 — Present)`,
-  achievements: `★ 250+ commits in 2026
-★ Hackathon finalist x3
-★ Top 5% LeetCode contest rating
-★ AWS / GCP certified fundamentals`,
+  achievements: `★ 300+ commits in 2026
+★ 15+ Technologies 
+★ HackerRank 5 Star Rated SQL
+★ IBM DevOps Certified`,
   contact: `email   : nishkarshhublikar@gmail.com
 github  : github.com/NishkarshHublikar
 linkedin: linkedin.com/in/nishkarsh-hublikar
