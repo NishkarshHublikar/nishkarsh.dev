@@ -97,3 +97,4 @@ export default function Resume() {
     </Section>
   );
 }
+

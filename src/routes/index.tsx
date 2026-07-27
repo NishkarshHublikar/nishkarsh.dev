@@ -40,7 +40,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [booted, setBooted] = useState(false);
-  const [palette, setPalette] = useState(false);
+  const [palette, setPalette]
+    = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
